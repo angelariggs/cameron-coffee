@@ -43,6 +43,11 @@
 5. Select English as the language, then click 'Save and Continue'.
 6. Under 'Database Type', select the radio button for 'MySQL, MariaDB, or equivalent'.
 7. Type in the name of your database that you set earlier.
-8. Then enter the username and password that you created in the MyPHPAdmin.
+8. Then enter the username and password that you created in the MyPHPAdmin, and click 'Save and Continue'.
+9. Drupal will configure itself.
+10. Choose a site name on the following page, and enter a site email address.
+11. Create a username, email, and password for the Site Maintenance Account. This is the account you'll use to log in and administer the Drupal site.
+12. Select your country and timezone, then click 'Save and Continue'.
+13. On the next page, click the link 'Visit Your New Site'.
 
 
