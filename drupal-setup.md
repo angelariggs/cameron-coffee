@@ -34,3 +34,15 @@
 		- This gives you admin permissons for the `defaults` folder
 4. When you run Drupal, it will save configuration settings inside `settings.php`
 5. During installation, Drupal will write your log-in info and other site settings into this file. Then it will change the permissions back to read-only, so that nobody can delete or modify it. 
+
+##Installing Drupal
+1. Open your MAMP application, and click 'Preferences', then click the 'Web Server' tab.
+2. Set your document route folder to point at the project directory (e.g. Sites/cameron-coffee/cameron-site).
+3. Point your browser to [localhost:8888](http://localhost:8888/).
+4. Select the standard install, then click 'Save and Continue'.
+5. Select English as the language, then click 'Save and Continue'.
+6. Under 'Database Type', select the radio button for 'MySQL, MariaDB, or equivalent'.
+7. Type in the name of your database that you set earlier.
+8. Then enter the username and password that you created in the MyPHPAdmin.
+
+
