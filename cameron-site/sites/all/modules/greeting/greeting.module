@@ -11,13 +11,13 @@ function greeting_menu() {
 	// 'access callback' defines permissions for each function in the module.
 	'access callback' => TRUE,
 	// 'type' can be one of a few common types defined by Drupal
-	'type' => MENU_NORMAL_ITEM,
+	'type' => MENU_CALLBACK,
 	];
 	$items['goodbye'] = [
 		'title' => 'Goodbye Friend',
 		'page callback' => 'say_goodbye',
 		'access callback' => TRUE,
-		'type' => MENU_NORMAL_ITEM,
+		'type' => MENU_CALLBACK,
 	];
 	return $items;
 };
@@ -29,3 +29,15 @@ function say_hello() {
 function say_goodbye() {
 	return '<p>Goodbye, my friend!</p>';
 };
+
+function greeting_user_login() {
+	// _GET is a global var for a get request; when a user logs in, a get request is made to take the user to the greeting page (defined on line 6, in the '$items' brackets, instead of the default front page.
+	$_GET['destination'] = 'hello_friend';
+};
+
+function greeting_user_logout() {
+	$_GET['destination'] = 'goodbye';
+}
+
+
+
