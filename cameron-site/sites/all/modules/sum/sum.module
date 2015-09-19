@@ -1,0 +1,65 @@
+<?php
+
+// When the url '/sum' is visited, run the function 'drupal_get_form' and pass the argument 'sum_form' into that function. The function 'sum_form' is the function that Drupal will call to build the form.
+function sum_menu() {
+	$items = [];
+	$items['sum'] = [
+		'title' => 'Calculate Sum',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => ['sum_form'],
+		'access callback' => TRUE,
+		'type' => MENU_NORMAL_ITEM,
+	];
+	//Another way to say it: '$items at the success URL'
+	$items['success'] = 
+	[
+		'title' => 'Success',
+		'access callback' => TRUE,
+		'type' => MENU_CALLBACK,
+	];
+
+	return $items;
+};
+
+function sum_form() {
+	$form = [];
+	//'left_number' is name attritbute of the form field in the generated HTML.
+	$form['left_number'] = 
+	[
+		'#title' => 'Left Number',
+		'#type' => 'textfield',
+		'#description' => t('Please enter your starting number.'),
+	];
+
+	$form['right_number'] = 
+	[
+		'#title' => 'Right Number',
+		'#type' => 'textfield',
+		'#description' => t('Please enter a number to add your starting number.'),
+	];
+
+	$form['submit'] = 
+	[
+		'#type' => 'submit',
+		'#value' => 'Calculate Sum',
+	];
+
+	return $form;
+};
+
+// When a form is submitted, the data is passed to hook_form_submit, inside the form_state array.
+// The arguments are defined by the documentation for the hook_form_submit
+function sum_form_submit($form, &$form_state) {
+	//'left number' was defined in function sum_form
+	$first_number = $form_state['values']['left_number'];
+	$second_number = $form_state['values']['right_number'];
+	$sum = $first_number + $second_number;
+	//built into PHP; it stores information
+	$_SESSION['sum_output'] = $sum;
+	$form_state['redirect'] = 'success';
+};
+
+function sum_success() {
+	$answer = $_SESSION['sum_output'];
+	return "You calculated a sum! The answer is $answer";
+};
