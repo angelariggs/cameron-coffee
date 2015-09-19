@@ -1,0 +1,31 @@
+<?php
+
+function greeting_menu() {
+	$items = [];
+	//the string in the square brackets define the url for the item
+	$items['hello_friend'] = [
+	// 'title' attribute is displayed on the menu, and as the content title
+	'title' => "Hello Friend!",
+	// 'page callback' defines the name of the function called when you visit the menu item URL
+	'page callback' => 'say_hello',
+	// 'access callback' defines permissions for each function in the module.
+	'access callback' => TRUE,
+	// 'type' can be one of a few common types defined by Drupal
+	'type' => MENU_NORMAL_ITEM,
+	];
+	$items['goodbye'] = [
+		'title' => 'Goodbye Friend',
+		'page callback' => 'say_goodbye',
+		'access callback' => TRUE,
+		'type' => MENU_NORMAL_ITEM,
+	];
+	return $items;
+};
+
+function say_hello() {
+	return '<p>Hello my dear friend!</p>';
+};
+
+function say_goodbye() {
+	return '<p>Goodbye, my friend!</p>';
+};
